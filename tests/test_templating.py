@@ -141,7 +141,7 @@ def test_add_template_filter(app):
 
 
 def test_template_filter_with_name(app):
-    @app.template_filter("strrev")
+    @app.template_filter(name="strrev")
     def my_reverse(s):
         return s[::-1]
 
@@ -188,7 +188,7 @@ def test_add_template_filter_with_template(app, client):
 
 
 def test_template_filter_with_name_and_template(app, client):
-    @app.template_filter("super_reverse")
+    @app.template_filter(name="super_reverse")
     def my_reverse(s):
         return s[::-1]
 

@@ -662,7 +662,7 @@ class App(Scaffold):
 
     @setupmethod
     def template_filter(
-        self, f: T_template_filter | None = None, name: str | None = None
+        self, f: T_template_filter | None = None , name: str | None = None
     ) -> t.Callable[[T_template_filter], T_template_filter]:
         """A decorator that is used to register custom template filter.
         You can specify a name for the filter, otherwise the function
@@ -679,10 +679,11 @@ class App(Scaffold):
         def decorator(f: T_template_filter) -> T_template_filter:
             self.add_template_filter(f, name=name)
             return f
-        
-        if not f:
+
+        if f is None:
             return decorator
-        return decorator(f)
+        else:
+            return decorator(f)
 
     @setupmethod
     def add_template_filter(
